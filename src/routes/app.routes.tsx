@@ -2,34 +2,44 @@ import { Platform } from 'react-native';
 import { useTheme } from 'native-base';
 import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
+
 import HomeSvg from '@assets/home.svg'
 import HistorySvg from '@assets/history.svg'
 import ProfileSvg from '@assets/profile.svg'
 
 import { Home } from '@screens/Home';
 import { Profile } from '@screens/Profile';
-import { History } from '@screens/History';
+import { MySpace } from '@screens/MySpace';
 import { AdDetail } from '@screens/AdDetail';
+
+
 
 type AppRoutes = {
     home: undefined;
+    space: undefined;
     profile: undefined;
-    history: undefined;
     detail: {
         carModel: string;
         price: string;
-        date: string;
+        year: string;
+        img: string;
+        km: string;
+        state: string;
+    };
+    favorites: {
+        img: string;
+        add_remove: boolean;
     }
 }
+
+
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>
 
 const { Navigator, Screen } = createBottomTabNavigator<AppRoutes>();
 
 export function AppRoutes() {
-
     const { sizes, colors } = useTheme();
-
     const iconSize = sizes[7]
 
     return (
@@ -47,10 +57,9 @@ export function AppRoutes() {
             },
             tabBarHideOnKeyboard: true,
 
+
         }}
-
         >
-
             <Screen
                 name='home'
                 component={Home}
@@ -59,16 +68,18 @@ export function AppRoutes() {
                         <HomeSvg fill={color} width={iconSize} height={iconSize} />
                     ),
                 }}
+
             />
 
             <Screen
-                name='history'
-                component={History}
+                name='space'
+                component={MySpace}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <HistorySvg fill={color} width={iconSize} height={iconSize} />
                     )
                 }}
+
             />
 
             <Screen
@@ -77,16 +88,23 @@ export function AppRoutes() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <ProfileSvg fill={color} width={iconSize} height={iconSize} />
-                    )
+                    ),
+
                 }}
             />
-
 
             <Screen
                 name='detail'
                 component={AdDetail}
-                options={{ tabBarButton: () => null }}
+                options={{
+                    tabBarButton: () => null,
+                    tabBarStyle: {
+                        display: 'none'
+                    }
+                }}
+
             />
+
 
         </Navigator>
     );

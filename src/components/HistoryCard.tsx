@@ -6,22 +6,24 @@ export function HistoryCard() {
     return (
         <HStack
             bg={'gray.600'}
-            w={'full'}
+            w={250}
             px={5}
             py={4}
-            mb={3}
+            m={1}
+            
             rounded={'md'}
             alignItems={'center'}
             justifyContent={'space-between'}
+            backgroundColor={'red.400'}
         >
 
-            <VStack mr={5} flex={1} >
+            <VStack mr={10} flex={1} >
                 <Heading color={'white'} fontSize={'md'} textTransform={'capitalize'} numberOfLines={1} fontFamily={'heading'}>
-                  
+                  Parte
                 </Heading>
 
-                <Text color={'gray.100'} fontSize={'lg'} numberOfLines={1}>
-                   
+                <Text color={'gray.100'} fontSize={'lg'} numberOfLines={2}>
+                   Do Henrique
                 </Text>
             </VStack>
 

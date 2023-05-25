@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
 import { useForm, Controller } from "react-hook-form";
@@ -26,6 +27,7 @@ const signUpSchema = yup.object({
 });
 
 export function SignUp() {
+    const [isLoading, setIsLoading] = useState(false);
 
     const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
         resolver: yupResolver(signUpSchema)
@@ -37,8 +39,8 @@ export function SignUp() {
         navigation.goBack();
     }
 
-    function handleSignUp({ email, name, password, password_confirm }: FormDataProps) {
-        console.log({ email, name, password, password_confirm });
+    async function handleSignUp({ email, name, password }: FormDataProps) {
+        console.log({ email, name, password });
     }
 
     return (
@@ -56,7 +58,7 @@ export function SignUp() {
                     <LogoSvg />
 
                     <Text color='gray.100' fontSize='sm' >
-                    Encontre o carro dos seus sonhos com facilidade
+                        Encontre o carro dos seus sonhos com facilidade
                     </Text>
 
                 </Center >
