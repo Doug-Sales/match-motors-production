@@ -11,7 +11,6 @@ import { TabHeaderFilter } from '@components/TabHeaderFilter';
 
 export function Home() {
     const { colors } = useTheme()
-    // Não precisa passar os dados na manualmente, o id apenas é o suficiente para buscar no banco de dados o array de fotos do usuário na pagina de descrição do anuncio.
     const [listCar, setListCar] = useState([
         {
             img: 'https://images.unsplash.com/photo-1657144513372-282839dc33ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzMxfHxwb3JjaGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
@@ -102,7 +101,9 @@ export function Home() {
             <HomeHeader />
 
             <Center >
-                <TabHeaderFilter />
+                <TabHeaderFilter
+                    length={listCar.length}
+                />
             </Center>
             <VStack flex={1} py={2} bg={'gray.600'} >
                 <FlatList
@@ -125,8 +126,8 @@ export function Home() {
                     contentContainerStyle={listCar.length === 0 && { flex: 1, justifyContent: 'center' }}
                     ListEmptyComponent={() => (
                         <Text color={'gray.100'} textAlign={'center'}  >
-                            Parece que não há carros que correspondam à sua pesquisa no momento.  {'\n'}{'\n'}
-                            Por que não tenta ampliar sua pesquisa?
+                            Parece que não há carros para ser listado no momento.
+
                         </Text>
                     )}
                 />

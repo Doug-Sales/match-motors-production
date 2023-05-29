@@ -1,13 +1,5 @@
-import { useState } from "react";
-
 import {  VStack,  Text, FlatList } from "native-base";
 import { CarAdComponent } from "@components/CarAdComponent";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { AppNavigatorRoutesProps } from "@routes/app.routes";
-
-import { ScreenHeader } from "@components/ScreenHeader";
-
-
 
 
 //lista modelo de demonstação, precisa puxar do banco de dados com base no id do anuncio.

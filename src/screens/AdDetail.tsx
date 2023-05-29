@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { TouchableOpacity, ImageBackground, View, Dimensions } from "react-native";
+import { TouchableOpacity, View, Dimensions } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -9,7 +9,7 @@ import { Box, HStack, Heading, Icon, Text, VStack, Pressable, useToast, FlatList
 import { Octicons, Feather } from '@expo/vector-icons'
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AppTabNavigatorRoutesProps } from "./MySpace";
+import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 
 
@@ -28,7 +28,7 @@ type RouteParams = {
 export function AdDetail() {
     const route = useRoute();
     const { colors } = useTheme()
-    const navigation = useNavigation<AppTabNavigatorRoutesProps>();
+    const navigation = useNavigation<AppNavigatorRoutesProps>();
     const { img } = route.params as RouteParams;
     const { width } = Dimensions.get('window')
     const [isClicked, setIsClicked] = useState(false);
@@ -75,25 +75,23 @@ export function AdDetail() {
             toast.show({
                 title: 'Adicionado aos favoritos.',
                 placement: 'top',
-                duration: 2000,
+                duration: 900,
                 variant: 'solid',
                 backgroundColor: 'blue.600',
                 marginTop: 8,
-                marginRight: -10,
             })
-            
+
 
         } else {
             toast.show({
                 title: 'Removido dos favoritos.',
                 placement: 'top',
-                duration: 2000,
+                duration: 800,
                 variant: 'solid',
                 backgroundColor: 'red.600',
                 marginTop: 8,
-                marginRight: -10,
             })
-            
+
         }
         setIsClicked(prevState => !prevState);
         //criar ação para listar favoritos (adicionar e remover)
@@ -150,47 +148,24 @@ export function AdDetail() {
                     data={userAdImage}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => (
-                        <HStack height={width} width={width} justifyContent={"center"}  >
-                            <AspectRatio justifyContent={"center"} alignItems={"center"} ratio={5 / 6}  >
-                                <ImageBackground
-                                    source={{ uri: `${item.url}` }}
-                                    imageStyle={{
-                                        resizeMode: 'cover',
-                                        opacity: 0.2,
-                                        borderRadius: 15,
-                                        backgroundColor: 'rgba(14, 21, 29, 0.58)',
-                                        borderColor: 'rgba(255, 255, 255, 0.125)',
-                                        marginHorizontal: -35,
-                                        paddingHorizontal: -10,
-
-                                    }}
-                                >
-                                    <View style={{
-                                        flex: 1,
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}
-                                    >
-                                        <Image
-                                            source={{ uri: `${item.url}` }}
-                                            alt="detalhes do anuncio"
-                                            resizeMode="cover"
-                                            size={'100%'}
-                                            maxHeight={'85%'}
-                                            maxWidth={'96%'}
-                                            rounded={10}
-                                            borderWidth={2}
-                                            borderColor='rgba(255, 255, 255, 0.13)'
-                                        />
-                                    </View>
-                                </ImageBackground>
-                            </AspectRatio>
+                        <HStack height={390} width={width} alignItems={"center"} justifyContent={"center"}  >
+                            <Image
+                                source={{ uri: `${item.url}` }}
+                                alt="detalhes do anuncio"
+                                resizeMode="cover"
+                                size={'100%'}
+                                maxHeight={'90%'}
+                                maxWidth={'98%'}
+                                rounded={10}
+                                borderWidth={2}
+                                borderColor='rgba(255, 255, 255, 0.13)'
+                            />
                         </HStack>
                     )}
                 />
                 {
                     userAdImage.length > 1 ?
-                        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: -20, alignItems: "center" }}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: -10, alignItems: "center" }}>
                             {
                                 userAdImage.map((_, i) => (
                                     <View
