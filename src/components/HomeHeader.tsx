@@ -20,6 +20,9 @@ export function HomeHeader() {
         navigation.navigate("profile")
     }
 
+    function handleNewAdRoute(){
+        navigation.navigate("new_ad")
+    }
     return (
         <HStack bg='gray.600' alignItems="center" pb={5} pt={16} px={8} >
             <TouchableOpacity onPress={handleOpenProfile}>
@@ -37,7 +40,7 @@ export function HomeHeader() {
             <Box flex={1} height={14} alignItems={"flex-end"} justifyContent={"center"}>
                 <Button
                     title="    Criar anúncio    +"
-                    onPress={() => { }}
+                    onPress={handleNewAdRoute}
                     rounded={10}
                     width={'60%'}
                     height={'80%'}

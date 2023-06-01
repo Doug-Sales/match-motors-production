@@ -4,7 +4,7 @@ import { TouchableOpacity, View, Dimensions } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-import { Box, HStack, Heading, Icon, Text, VStack, Pressable, useToast, FlatList, AspectRatio, Image, useTheme } from "native-base";
+import { Box, HStack, Heading, Icon, Text, VStack, Pressable, useToast, FlatList, Image, useTheme } from "native-base";
 
 import { Octicons, Feather } from '@expo/vector-icons'
 

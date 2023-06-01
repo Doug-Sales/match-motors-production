@@ -26,9 +26,8 @@ import ProfileSvg from '@assets/profile.svg'
 
 import { Home } from '@screens/Home';
 import { Profile } from '@screens/Profile';
-// import { MySpace } from '@screens/MySpace';
 import { AdDetail } from '@screens/AdDetail';
-
+import { CreateNewAd } from '@screens/CreateNewAd';
 
 
 type AppRoutes = {
@@ -36,6 +35,7 @@ type AppRoutes = {
     space: undefined;
     profile: undefined;
     meus_anuncios: undefined;
+    new_ad: undefined;
     detail: {
         carModel: string;
         price: string;
@@ -126,7 +126,17 @@ export function AppRoutes() {
                 }}
 
             />
+            <Screen
+                name='new_ad'
+                component={CreateNewAd}
+                options={{
+                    tabBarButton: () => null,
+                    tabBarStyle: {
+                        display: 'none'
+                    }
+                }}
 
+            />
 
         </Navigator>
     );
